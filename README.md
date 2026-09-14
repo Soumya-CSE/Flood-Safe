@@ -1,4 +1,4 @@
-# 🌧️ Flash Flood & Landslide Early Warning — Prototype
+# 🌧️ Flash Flood Prediction System — Prototype
 
 A **Streamlit-based prototype** for **Flash Flood Prediction System for Hilly Regions using Multi-Source Data**.
 
