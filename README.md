@@ -1,69 +1,272 @@
-# Flash Flood & Landslide Early Warning — Prototype
+# 🌧️ Flash Flood & Landslide Early Warning — Prototype
 
-Prototype for MHA Problem Statement 192 (Flash Flood Prediction System for
-Hilly Regions using Multi-Source Data), built with Streamlit.
+A **Streamlit-based prototype** for **MHA Problem Statement 192: Flash Flood Prediction System for Hilly Regions using Multi-Source Data**.
 
-## Run it
+The system combines rainfall, soil moisture, terrain, historical landslide information, and glacial-lake indicators to estimate village-level disaster risk and demonstrate an end-to-end early-warning workflow.
+
+> ⚠️ **Prototype:** Some components use simulated/sample data for demonstration. The **About** tab clearly identifies real vs simulated components.
+
+---
+
+## 🚀 Run It
 
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
 ```
 
-Opens at `http://localhost:8501`.
+Open:
 
-## What's inside
+```text
+http://localhost:8501
+```
 
-| Tab | What it does |
-|---|---|
-| 🗺️ Live Risk Map | Village-level risk map (Low/Medium/High/Critical), color + size coded, blue ring = glacial lake nearby |
-| 📍 Village Detail | Risk gauge, live rainfall/soil-moisture trend, **glacial lake / GLOF status panel**, **explainable AI** (SHAP) breakdown |
-| 🌊 Cascade Simulator | Simulates a GLOF breach at a chosen lake village and propagates the flood wave downstream over time, showing which villages are hit, when, and how hard |
-| 🛰️ Satellite Lake Monitor | Automated glacial lake change detection — thresholds a water index across time-series rasters to measure lake growth, the same algorithm a real Sentinel-1/2 pipeline uses |
-| 🚨 Alerts | Lists villages at High/Critical risk, simulated Email/SMS/Siren dispatch + log |
-| 🧭 Safe Route & Shelters | Nearest shelter per village + indicative evacuation path on map |
-| 🗣️ Community Feedback | Citizens/volunteers submit ground reports → feeds back into model retraining |
-| ℹ️ About | Explains what's real data vs simulated in this demo |
+---
 
-Sidebar controls:
-- **Simulate next sensor reading** — advances a random-walk "live" feed (stand-in for real IoT/satellite ingestion) and recomputes risk for every village
-- **Reset to baseline data** — clears the live feed and alert/history log
+## 🧩 Features
 
-## Editing the dataset
+| Tab                            | Purpose                                                                        |
+| ------------------------------ | ------------------------------------------------------------------------------ |
+| 🗺️ **Live Risk Map**          | Village-level Low/Medium/High/Critical risk map with glacial-lake indicators   |
+| 📍 **Village Detail**          | Risk gauge, rainfall/soil-moisture trends, GLOF status and SHAP explainability |
+| 🌊 **Cascade Simulator**       | Simulates a GLOF breach and downstream flood-wave impact                       |
+| 🛰️ **Satellite Lake Monitor** | Demonstrates glacial-lake change detection using time-series raster data       |
+| 🚨 **Alerts**                  | Identifies High/Critical villages and simulates Email/SMS/Siren dispatch       |
+| 🧭 **Safe Route & Shelters**   | Shows nearest shelters and indicative evacuation paths                         |
+| 🗣️ **Community Feedback**     | Collects local observations and Traditional Ecological Knowledge               |
+| ℹ️ **About**                   | Explains architecture, data sources and prototype limitations                  |
 
-Everything the model trains on lives in `data/villages_sample.csv`. To plug in
-real data:
+### Sidebar
 
-1. Keep the same column names (`village_id, village_name, district, lat, lon,
-   elevation_m, slope_deg, distance_to_river_km, lulc_forest_pct,
-   lithology_risk, rainfall_today_mm, rainfall_3day_mm, soil_moisture_pct,
-   historical_landslide_count, glacial_lake_present, glacial_lake_area_km2,
-   glacial_lake_growth_rate_pct_5yr, distance_to_glacial_lake_km,
-   glacier_melt_index, moraine_dam_stability, label, nearest_shelter,
-   shelter_lat, shelter_lon, data_provenance`)
-2. Replace the synthetic values with real ones:
-   - Rainfall → IMD / IMDLIB
-   - Soil moisture → ISRO Bhoonidhi (EOS-04 SAR) or NASA SMAP
-   - Elevation / slope → Bhuvan or SRTM DEM (derive slope via QGIS/`richdem`)
-   - Lithology / historical landslide label → GSI Bhukosh inventory
-   - Glacial lake area / growth rate / melt index → ICIMOD glacial lake
-     inventory or ISRO glacier monitoring products (for villages with no
-     nearby lake, set `glacial_lake_present=False` and leave the other GLOF
-     columns at `0` / `999` as in the sample)
-3. Restart the app — it retrains on whatever is in the CSV at startup.
+* **Simulate next sensor reading** — generates a simulated live reading and recalculates risk.
+* **Reset to baseline** — restores the original dataset and clears alert history.
 
-`generate_data.py` shows exactly how the sample file was built, in case you
-want to regenerate it for a different pilot region.
+---
 
-## Known simplifications (be upfront about these in your demo)
+## 🌍 Multi-Source Data
 
-- The "live sensor feed" is a simulated random walk, not a real IoT connection
-- Alert dispatch (Email/SMS/Siren) is logged in-app, not actually sent
-- The evacuation path is a straight line between village and shelter, not
-  routed over the real road network
-- The historical-event label used to train the demo model is synthetic
+| Data                     | Intended Source                     |
+| ------------------------ | ----------------------------------- |
+| 🌧️ Rainfall             | IMD / IMDLIB                        |
+| 💧 Soil Moisture         | ISRO Bhoonidhi / EOS-04 / NASA SMAP |
+| ⛰️ Elevation & Slope     | Bhuvan / SRTM DEM                   |
+| 🪨 Landslide & Lithology | GSI Bhukosh                         |
+| 🏔️ Glacial Lakes        | ICIMOD / ISRO products              |
+| 🛰️ Satellite Monitoring | Sentinel-1 / Sentinel-2             |
 
-These are flagged explicitly in the **About** tab and inline captions so the
-prototype stays honest about what's real vs simulated — call this out
-proactively when presenting, it reads as engineering maturity rather than
-a gap.
+The current prototype uses sample data in:
+
+```text
+data/villages_sample.csv
+```
+
+To integrate real data, retain the existing column structure and replace the synthetic values.
+
+---
+
+## 🌊 Cascade Simulator
+
+Demonstrates the cascading hazard chain:
+
+```text
+Glacial Lake
+     ↓
+GLOF Breach
+     ↓
+Flood Wave
+     ↓
+Downstream Villages
+     ↓
+Impact & Early Warning
+```
+
+The prototype estimates downstream impact using distance, elevation and simplified flood-wave propagation.
+
+> This is an illustrative simulation, not a physically validated hydraulic model.
+
+---
+
+## 🛰️ Satellite Lake Monitor
+
+Demonstrates automated lake-change detection by:
+
+1. Processing time-series raster data
+2. Applying a water-index threshold
+3. Estimating water area
+4. Measuring lake growth over time
+
+The same concept can later be connected to real Sentinel-1/2 processing pipelines.
+
+---
+
+## 🤖 Explainable AI
+
+The system uses **SHAP** to explain individual risk predictions.
+
+Important factors can include:
+
+* Rainfall
+* Soil moisture
+* Slope
+* Elevation
+* Historical landslides
+* Glacial-lake growth
+* Distance to glacial lake
+* Moraine-dam stability
+
+Instead of only showing:
+
+```text
+Risk = HIGH
+```
+
+the system also answers:
+
+> **Why is this village considered high risk?**
+
+---
+
+## 🗣️ Community Feedback & Traditional Ecological Knowledge
+
+The system includes a **human-in-the-loop** layer where citizens, volunteers and local communities can report:
+
+* Heavy or unusual rainfall
+* Rapid water-level changes
+* Landslide signs
+* Blocked roads
+* Changes in rivers/streams
+* Historically vulnerable locations
+* Local safe/unsafe routes
+
+### 🌿 Traditional Ecological Knowledge
+
+Local communities may also provide **Traditional Ecological Knowledge (TEK)** developed through generations of observing their environment.
+
+Examples include:
+
+* Changes in river behaviour
+* Changes in springs or water sources
+* Local flood/landslide warning signs
+* Unusual environmental patterns
+* Traditional knowledge of safe areas
+
+A well-known example is **Simeulue's "Smong" tradition**, where generations of local knowledge helped communities recognize tsunami warning signs and move to higher ground.
+
+The project therefore combines:
+
+```text
+Sensor Data
+     +
+Satellite Data
+     +
+Historical Data
+     +
+AI Prediction
+     +
+Community Reports
+     +
+Traditional Ecological Knowledge
+     ↓
+Context-Aware Early Warning
+```
+
+> TEK complements scientific measurements; it does not replace official warning systems.
+
+---
+
+## 🚨 Alerts
+
+The system identifies:
+
+```text
+HIGH
+CRITICAL
+```
+
+risk villages and demonstrates:
+
+```text
+Risk Detection
+      ↓
+Alert Generation
+      ↓
+Email / SMS / Siren
+      ↓
+Alert Log
+```
+
+Currently, dispatch is **simulated and logged inside the application**.
+
+---
+
+## 🧭 Safe Routes & Shelters
+
+The system identifies the nearest shelter and displays an indicative evacuation path.
+
+> Current routes are simplified straight-line paths. Future versions can use real road networks, blocked-road information and dynamic evacuation routing.
+
+---
+
+## ⚠️ Known Limitations
+
+This is a **prototype**, not a production disaster-management system.
+
+* Live sensor feed → simulated random walk
+* Alert dispatch → simulated
+* Evacuation route → simplified
+* Training labels → synthetic
+* GLOF propagation → simplified
+* Dataset → sample/demo data
+
+These limitations are intentionally disclosed in the **About** section.
+
+---
+
+## 🔮 Future Scope
+
+* 📡 Real-time IoT sensors
+* 🌧️ Live rainfall feeds
+* 🛰️ Automated Sentinel-1/2 processing
+* 🧠 LSTM / GNN-based prediction
+* 🗄️ Real-time database
+* ⚡ FastAPI prediction service
+* 📧 Real email alerts
+* 📱 SMS/mobile alerts
+* 🗺️ Real road-network evacuation routing
+* 🌊 Physically validated GLOF/flood modelling
+* 👥 Community + TEK data integration
+
+---
+
+## 📁 Project Structure
+
+```text
+Flood-Safe/
+│
+├── app.py
+├── generate_data.py
+├── model_utils.py
+├── requirements.txt
+├── README.md
+│
+└── data/
+    └── villages_sample.csv
+```
+
+---
+
+## 🎯 Goal
+
+The long-term goal is to build a **multi-source, explainable and community-aware early-warning system** that can:
+
+```text
+Detect → Predict → Explain → Alert → Evacuate → Learn
+```
+
+to provide earlier and more actionable warnings for vulnerable communities in hilly regions.
+
+---
+
+## 📜 Disclaimer
+
+This project is an **academic/hackathon prototype**. It should not be used for real-world evacuation or emergency decisions without validation using authoritative data, domain expertise, and validated disaster-management models.
