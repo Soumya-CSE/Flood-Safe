@@ -1,6 +1,6 @@
 # 🌧️ Flash Flood & Landslide Early Warning — Prototype
 
-A **Streamlit-based prototype** for **MHA Problem Statement 192: Flash Flood Prediction System for Hilly Regions using Multi-Source Data**.
+A **Streamlit-based prototype** for **Flash Flood Prediction System for Hilly Regions using Multi-Source Data**.
 
 The system combines rainfall, soil moisture, terrain, historical landslide information, and glacial-lake indicators to estimate village-level disaster risk and demonstrate an end-to-end early-warning workflow.
 
