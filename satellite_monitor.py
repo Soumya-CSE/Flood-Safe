@@ -1,30 +1,3 @@
-"""
-Automated glacial lake change-detection pipeline.
-
-Demonstrates the actual algorithm used in real satellite-based GLOF
-monitoring (water-body extraction via a spectral water index + pixel
-counting to get area, repeated across time to get a growth trend) —
-running here on synthetic raster snapshots so the pipeline works fully
-offline in this prototype.
-
-To point this at REAL data in production, replace `generate_synthetic_snapshots()`
-with a Google Earth Engine / Sentinel Hub pull, e.g.:
-
-    import ee
-    ee.Initialize()
-    collection = (
-        ee.ImageCollection("COPERNICUS/S2_SR_HARMONIZED")
-        .filterBounds(lake_point)
-        .filterDate(start_date, end_date)
-        .map(lambda img: img.normalizedDifference(["B3", "B8"]).rename("NDWI"))
-    )
-    # threshold NDWI > 0.2 to get a water mask, then use ee.Image.pixelArea()
-    # summed over the water mask to get lake area in m^2 for each date.
-
-The detection logic below (threshold -> water mask -> pixel-area sum) is
-IDENTICAL in structure to that real pipeline; only the image source differs.
-"""
-
 import numpy as np
 import pandas as pd
 
