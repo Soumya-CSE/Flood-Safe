@@ -1,17 +1,3 @@
-"""
-Generates a sample village-level dataset for the Flash Flood / Landslide /
-GLOF (Glacial Lake Outburst Flood) Prediction System pilot (modelled loosely
-on real glacier-belt hill districts: Chamoli & Rudraprayag (2013 Kedarnath /
-Chorabari Lake event, 2021 Chamoli event), North Sikkim (2023 South Lhonak
-Lake GLOF), Kinnaur, and Kullu).
-
-This is SYNTHETIC / SAMPLE data meant as a starting point for the prototype.
-Replace this file's output (data/villages_sample.csv) with real
-IMD / ISRO Bhoonidhi / Bhuvan DEM / GSI Bhukosh / ICIMOD glacial lake
-inventory values once available.
-Every row is tagged in `data_provenance` so real vs simulated stays traceable.
-"""
-
 import numpy as np
 import pandas as pd
 
