@@ -1,7 +1,3 @@
-"""
-Model + feature helpers for the Flash Flood / Landslide Early Warning prototype.
-"""
-
 import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
