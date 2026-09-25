@@ -254,6 +254,7 @@ Flood-Safe/
 ```
 ## 📸 Screenshots
 
+<img width="1895" height="915" alt="Screenshot 2026-09-16 103949" src="https://github.com/user-attachments/assets/aae02ad6-7ebd-4e14-9477-64a72b315d7d" />
 
 
 ---
