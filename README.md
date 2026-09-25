@@ -252,6 +252,9 @@ Flood-Safe/
 └── data/
     └── villages_sample.csv
 ```
+## 📸 Screenshots
+
+
 
 ---
 
