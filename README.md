@@ -264,6 +264,8 @@ Flood-Safe/
 
 <img width="1138" height="822" alt="Screenshot 2026-09-16 104307" src="https://github.com/user-attachments/assets/09591677-6217-4f56-af18-f0d08411d280" />
 
+<img width="1172" height="857" alt="Screenshot 2026-09-16 104324" src="https://github.com/user-attachments/assets/cd59103f-59ce-4d44-86ca-a405e01120db" />
+
 ---
 
 ## 🎯 Goal
