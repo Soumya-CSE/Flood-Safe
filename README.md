@@ -258,7 +258,7 @@ Flood-Safe/
 
 <img width="1895" height="915" alt="Screenshot 2026-09-16 103949" src="https://github.com/user-attachments/assets/aae02ad6-7ebd-4e14-9477-64a72b315d7d" />
 
-### Village Details 
+### 🏘️ Village Details 
 
 <img width="1910" height="906" alt="Screenshot 2026-09-16 104036" src="https://github.com/user-attachments/assets/ad4ded30-4f61-4d3a-abec-abe94c579e12" />
 
