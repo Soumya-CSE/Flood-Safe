@@ -302,3 +302,22 @@ to provide earlier and more actionable warnings for vulnerable communities in hi
 ## 📜 Disclaimer
 
 This project is an **academic/hackathon prototype**. It should not be used for real-world evacuation or emergency decisions without validation using authoritative data, domain expertise, and validated disaster-management models.
+
+---
+# 👨‍💻 Author
+
+**Soumya Hazra**
+
+B.Tech Computer Science & Engineering
+
+Interested in:
+
+```text
+Cybersecurity
+SOC Analysis
+Blue Team
+Threat Hunting
+MITRE ATT&CK
+Detection Engineering
+Security Automation
+```
