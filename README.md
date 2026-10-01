@@ -304,7 +304,7 @@ to provide earlier and more actionable warnings for vulnerable communities in hi
 This project is an **academic/hackathon prototype**. It should not be used for real-world evacuation or emergency decisions without validation using authoritative data, domain expertise, and validated disaster-management models.
 
 ---
-# 👨‍💻 Author
+## 👨‍💻 Author
 
 **Soumya Hazra**
 
