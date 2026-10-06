@@ -145,7 +145,6 @@ Local communities may also provide **Traditional Ecological Knowledge (TEK)** de
 Examples include:
 
 * Changes in river behaviour
-* Changes in springs or water sources
 * Local flood/landslide warning signs
 * Unusual environmental patterns
 * Traditional knowledge of safe areas
