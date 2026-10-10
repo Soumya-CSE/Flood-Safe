@@ -1,4 +1,4 @@
-# 🌧️ Flash Flood Prediction System — Prototype
+# 🌧️ Flash Flood Prediction System 
 
 A **Streamlit-based prototype** for **Flash Flood Prediction System for Hilly Regions using Multi-Source Data**.
 
@@ -305,7 +305,7 @@ This project is an **academic/hackathon prototype**. It should not be used for r
 ---
 ## 👨‍💻 Author
 
-**Soumya Hazra**
+**Soumya Kanti Hazra**
 
 B.Tech Computer Science & Engineering
 
